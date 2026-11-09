@@ -1,0 +1,1685 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+360 (git sha1 5e740962d, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Running command `read_verilog uart_tx.v uart_rx.v uart_top.v; hierarchy -check -top uart_top; synth -top uart_top; stat' --
+
+1. Executing Verilog-2005 frontend: uart_tx.v
+Parsing Verilog input from `uart_tx.v' to AST representation.
+Generating RTLIL representation for module `\uart_tx'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: uart_rx.v
+Parsing Verilog input from `uart_rx.v' to AST representation.
+Generating RTLIL representation for module `\uart_rx'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: uart_top.v
+Parsing Verilog input from `uart_top.v' to AST representation.
+Generating RTLIL representation for module `\uart_top'.
+Successfully finished Verilog frontend.
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1. Analyzing design hierarchy..
+Top module:  \uart_top
+Used module:     \uart_rx
+Used module:     \uart_tx
+Parameter \CLK_FREQ = 50000000
+Parameter \BAUD_RATE = 115200
+
+4.2. Executing AST frontend in derive mode using pre-parsed AST for module `\uart_rx'.
+Parameter \CLK_FREQ = 50000000
+Parameter \BAUD_RATE = 115200
+Generating RTLIL representation for module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Parameter \CLK_FREQ = 50000000
+Parameter \BAUD_RATE = 115200
+
+4.3. Executing AST frontend in derive mode using pre-parsed AST for module `\uart_tx'.
+Parameter \CLK_FREQ = 50000000
+Parameter \BAUD_RATE = 115200
+Generating RTLIL representation for module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+
+4.4. Analyzing design hierarchy..
+Top module:  \uart_top
+Used module:     $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx
+Used module:     $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx
+
+4.5. Analyzing design hierarchy..
+Top module:  \uart_top
+Used module:     $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx
+Used module:     $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx
+Removing unused module `\uart_rx'.
+Removing unused module `\uart_tx'.
+Removed 2 unused modules.
+
+5. Executing SYNTH pass.
+
+5.1. Executing HIERARCHY pass (managing design hierarchy).
+
+5.1.1. Analyzing design hierarchy..
+Top module:  \uart_top
+Used module:     $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx
+Used module:     $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx
+
+5.1.2. Analyzing design hierarchy..
+Top module:  \uart_top
+Used module:     $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx
+Used module:     $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx
+Removed 0 unused modules.
+
+5.2. Executing PROC pass (convert processes to netlists).
+
+5.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+5.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $uart_tx.v:26$proc$75 in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Marked 6 switch rules as full_case in process $uart_tx.v:26$proc$75 in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Removed 1 dead cases from process $uart_rx.v:41$proc$48 in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+Marked 7 switch rules as full_case in process $uart_rx.v:41$proc$48 in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+Marked 1 switch rules as full_case in process $uart_rx.v:30$proc$46 in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+Removed a total of 2 dead cases.
+
+5.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 6 redundant assignments.
+Promoted 7 assignments to connections.
+
+5.2.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:24$proc$88'.
+  Set init value: \data_reg = 8'00000000
+Found init rule in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:23$proc$87'.
+  Set init value: \bit_index = 3'000
+Found init rule in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:22$proc$86'.
+  Set init value: \clk_count = 16'0000000000000000
+Found init rule in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:21$proc$85'.
+  Set init value: \state = 2'00
+
+5.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \reset in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:26$proc$75'.
+Found async reset \reset in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:41$proc$48'.
+Found async reset \reset in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:30$proc$46'.
+
+5.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~14 debug messages>
+
+5.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:24$proc$88'.
+Creating decoders for process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:23$proc$87'.
+Creating decoders for process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:22$proc$86'.
+Creating decoders for process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:21$proc$85'.
+Creating decoders for process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:26$proc$75'.
+     1/6: $0\clk_count[15:0]
+     2/6: $0\tx[0:0]
+     3/6: $0\data_reg[7:0]
+     4/6: $0\bit_index[2:0]
+     5/6: $0\state[1:0]
+     6/6: $0\tx_busy[0:0]
+Creating decoders for process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:41$proc$48'.
+     1/11: $3$lookahead\data_reg$47[7:0]$61
+     2/11: $3$bitselwrite$pos$uart_rx.v:77$45[2:0]$60
+     3/11: $0\clk_count[15:0]
+     4/11: $2$lookahead\data_reg$47[7:0]$54
+     5/11: $2$bitselwrite$pos$uart_rx.v:77$45[2:0]$53
+     6/11: $1$lookahead\data_reg$47[7:0]$52
+     7/11: $1$bitselwrite$pos$uart_rx.v:77$45[2:0]$51
+     8/11: $0\rx_done[0:0]
+     9/11: $0\rx_data[7:0]
+    10/11: $0\bit_index[2:0]
+    11/11: $0\state[1:0]
+Creating decoders for process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:30$proc$46'.
+     1/2: $0\rx_sync2[0:0]
+     2/2: $0\rx_sync1[0:0]
+
+5.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+5.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.\tx' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:26$proc$75'.
+  created $adff cell `$procdff$239' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.\tx_busy' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:26$proc$75'.
+  created $adff cell `$procdff$242' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.\state' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:26$proc$75'.
+  created $adff cell `$procdff$245' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.\clk_count' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:26$proc$75'.
+  created $adff cell `$procdff$248' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.\bit_index' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:26$proc$75'.
+  created $adff cell `$procdff$251' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.\data_reg' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:26$proc$75'.
+  created $adff cell `$procdff$254' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.\state' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:41$proc$48'.
+  created $adff cell `$procdff$257' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.\clk_count' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:41$proc$48'.
+  created $adff cell `$procdff$260' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.\bit_index' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:41$proc$48'.
+  created $adff cell `$procdff$263' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.\data_reg' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:41$proc$48'.
+  created $adff cell `$procdff$266' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.\rx_data' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:41$proc$48'.
+  created $adff cell `$procdff$269' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.\rx_done' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:41$proc$48'.
+  created $adff cell `$procdff$272' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$bitselwrite$pos$uart_rx.v:77$45' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:41$proc$48'.
+  created $adff cell `$procdff$275' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$lookahead\data_reg$47' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:41$proc$48'.
+  created $adff cell `$procdff$278' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.\rx_sync1' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:30$proc$46'.
+  created $adff cell `$procdff$281' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.\rx_sync2' using process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:30$proc$46'.
+  created $adff cell `$procdff$284' with positive edge clock and positive level reset.
+
+5.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+5.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:24$proc$88'.
+Removing empty process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:23$proc$87'.
+Removing empty process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:22$proc$86'.
+Removing empty process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:21$proc$85'.
+Found and cleaned up 6 empty switches in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:26$proc$75'.
+Removing empty process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:26$proc$75'.
+Found and cleaned up 8 empty switches in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:41$proc$48'.
+Removing empty process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:41$proc$48'.
+Removing empty process `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:30$proc$46'.
+Cleaned up 14 empty switches.
+
+5.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+<suppressed ~11 debug messages>
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+<suppressed ~20 debug messages>
+
+5.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+
+5.4. Executing CHECK pass (checking for obvious problems).
+Checking module uart_top...
+Checking module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx...
+Checking module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx...
+Found and reported 0 problems.
+
+5.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+Removed 12 unused cells and 86 unused wires.
+<suppressed ~14 debug messages>
+
+5.6. Executing OPT pass (performing simple optimizations).
+
+5.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+
+5.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 52 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 35 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+<suppressed ~51 debug messages>
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 63 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 46 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+<suppressed ~51 debug messages>
+Removed a total of 34 cells.
+
+5.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$159.
+Removed 1 multiplexer ports.
+<suppressed ~55 debug messages>
+
+5.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_top.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+    New ctrl vector for $pmux cell $procmux$103: { $auto$opt_reduce.cc:137:opt_pmux$286 $procmux$139_CMP $procmux$143_CMP }
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+    New ctrl vector for $pmux cell $procmux$181: { $auto$opt_reduce.cc:137:opt_pmux$288 $procmux$226_CMP }
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+Performed a total of 2 changes.
+
+5.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 36 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 34 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+<suppressed ~6 debug messages>
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 46 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 45 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+<suppressed ~3 debug messages>
+Removed a total of 3 cells.
+
+5.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+Removed 0 unused cells and 38 unused wires.
+<suppressed ~2 debug messages>
+
+5.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+
+5.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~58 debug messages>
+
+5.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_top.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+    New ctrl vector for $pmux cell $procmux$92: { $auto$opt_reduce.cc:137:opt_pmux$290 $procmux$102_CMP }
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+    New ctrl vector for $pmux cell $procmux$170: { $auto$opt_reduce.cc:137:opt_pmux$292 $procmux$179_CMP $procmux$180_CMP }
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+Performed a total of 2 changes.
+
+5.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 35 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 46 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Removed a total of 0 cells.
+
+5.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+
+5.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+
+5.6.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.6.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~51 debug messages>
+
+5.6.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_top.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+Performed a total of 0 changes.
+
+5.6.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 35 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 46 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Removed a total of 0 cells.
+
+5.6.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.6.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+
+5.6.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+
+5.6.23. Finished fast OPT passes. (There is nothing left to do.)
+
+5.7. Executing FSM pass (extract and optimize FSM).
+
+5.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.state as FSM state register:
+    Register has an initialization value.
+Found FSM state register $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.state.
+
+5.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\state' from module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+  found $adff cell for state register: $procdff$257
+  root of input selection tree: $0\state[1:0]
+  found reset state: 2'00 (from async reset)
+  found ctrl input: $procmux$171_CMP
+  found ctrl input: $procmux$160_CMP
+  found ctrl input: $procmux$179_CMP
+  found ctrl input: $procmux$180_CMP
+  found ctrl input: $procmux$158_CMP
+  found ctrl input: $procmux$209_CMP
+  found state code: 2'11
+  found ctrl input: $procmux$178_CMP
+  found ctrl input: \rx_sync2
+  found state code: 2'10
+  found state code: 2'01
+  found ctrl output: $procmux$179_CMP
+  found ctrl output: $procmux$180_CMP
+  found ctrl output: $procmux$171_CMP
+  found ctrl output: $procmux$160_CMP
+  ctrl inputs: { $procmux$209_CMP $procmux$178_CMP $procmux$158_CMP \rx_sync2 }
+  ctrl outputs: { $procmux$180_CMP $procmux$179_CMP $procmux$171_CMP $procmux$160_CMP $0\state[1:0] }
+  transition:       2'00 4'---0 ->       2'01 6'100001
+  transition:       2'00 4'---1 ->       2'00 6'100000
+  transition:       2'10 4'--0- ->       2'10 6'000110
+  transition:       2'10 4'0-1- ->       2'10 6'000110
+  transition:       2'10 4'1-1- ->       2'11 6'000111
+  transition:       2'01 4'-0-- ->       2'01 6'010001
+  transition:       2'01 4'-1-0 ->       2'10 6'010010
+  transition:       2'01 4'-1-1 ->       2'00 6'010000
+  transition:       2'11 4'--0- ->       2'11 6'001011
+  transition:       2'11 4'--1- ->       2'00 6'001000
+
+5.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$293' from module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+
+5.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+Removed 12 unused cells and 12 unused wires.
+<suppressed ~13 debug messages>
+
+5.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$293' from module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+  Removing unused output signal $0\state[1:0] [0].
+  Removing unused output signal $0\state[1:0] [1].
+
+5.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\state$293' from module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  00 -> ---1
+  10 -> --1-
+  01 -> -1--
+  11 -> 1---
+
+5.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\state$293' from module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx':
+-------------------------------------
+
+  Information on FSM $fsm$\state$293 (\state):
+
+  Number of input signals:    4
+  Number of output signals:   4
+  Number of state bits:       4
+
+  Input signals:
+    0: \rx_sync2
+    1: $procmux$158_CMP
+    2: $procmux$178_CMP
+    3: $procmux$209_CMP
+
+  Output signals:
+    0: $procmux$160_CMP
+    1: $procmux$171_CMP
+    2: $procmux$179_CMP
+    3: $procmux$180_CMP
+
+  State encoding:
+    0:     4'---1  <RESET STATE>
+    1:     4'--1-
+    2:     4'-1--
+    3:     4'1---
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 4'---1   ->     0 4'1000
+      1:     0 4'---0   ->     2 4'1000
+      2:     1 4'--0-   ->     1 4'0001
+      3:     1 4'0-1-   ->     1 4'0001
+      4:     1 4'1-1-   ->     3 4'0001
+      5:     2 4'-1-1   ->     0 4'0100
+      6:     2 4'-1-0   ->     1 4'0100
+      7:     2 4'-0--   ->     2 4'0100
+      8:     3 4'--1-   ->     0 4'0010
+      9:     3 4'--0-   ->     3 4'0010
+
+-------------------------------------
+
+5.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\state$293' from module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+
+5.8. Executing OPT pass (performing simple optimizations).
+
+5.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+<suppressed ~6 debug messages>
+
+5.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 35 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 57 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 56 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+5.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~43 debug messages>
+
+5.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_top.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+Performed a total of 0 changes.
+
+5.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 35 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 56 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Removed a total of 0 cells.
+
+5.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$245 ($adff) from module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx (D = $0\state[1:0], Q = \state).
+Adding EN signal on $procdff$254 ($adff) from module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx (D = \tx_data, Q = \data_reg).
+Adding EN signal on $procdff$242 ($adff) from module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx (D = $0\tx_busy[0:0], Q = \tx_busy).
+Adding EN signal on $procdff$251 ($adff) from module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx (D = $0\bit_index[2:0], Q = \bit_index).
+Adding EN signal on $procdff$266 ($adff) from module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx (D = $0$lookahead\data_reg$47[7:0]$50, Q = \data_reg).
+Adding EN signal on $procdff$263 ($adff) from module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx (D = $0\bit_index[2:0], Q = \bit_index).
+Adding EN signal on $procdff$269 ($adff) from module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx (D = \data_reg, Q = \rx_data).
+
+5.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+Removed 5 unused cells and 15 unused wires.
+<suppressed ~7 debug messages>
+
+5.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+<suppressed ~3 debug messages>
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+<suppressed ~2 debug messages>
+
+5.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~36 debug messages>
+
+5.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_top.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+    New ctrl vector for $pmux cell $procmux$181: \state [1]
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+Performed a total of 1 changes.
+
+5.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 49 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 46 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+<suppressed ~9 debug messages>
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 61 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 60 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+<suppressed ~3 debug messages>
+Removed a total of 4 cells.
+
+5.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~2 debug messages>
+
+5.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+
+5.8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~36 debug messages>
+
+5.8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_top.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+Performed a total of 0 changes.
+
+5.8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 46 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 60 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Removed a total of 0 cells.
+
+5.8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+
+5.8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+
+5.8.23. Finished fast OPT passes. (There is nothing left to do.)
+
+5.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$auto$simple.cc:214:make_patterns_logic$359 ($ne).
+Removed top 31 bits (of 32) from port B of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:69$add$81 ($add).
+Removed top 29 bits (of 32) from port Y of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:69$add$81 ($add).
+Removed top 7 bits (of 16) from port B of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:77$eq$83 ($eq).
+Removed top 31 bits (of 32) from port B of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:82$add$84 ($add).
+Removed top 16 bits (of 32) from port Y of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:82$add$84 ($add).
+Removed top 1 bits (of 2) from port B of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$procmux$143_CMP0 ($eq).
+Removed top 29 bits (of 32) from wire $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:69$add$81_Y.
+Removed top 16 bits (of 32) from wire $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.$uart_tx.v:57$add$77_Y.
+Removed top 1 bits (of 2) from port B of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$auto$fsm_map.cc:77:implement_pattern_cache$325 ($eq).
+Removed top 8 bits (of 16) from port B of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:63$eq$56 ($eq).
+Converting cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:77$neg$66 ($neg) from signed to unsigned.
+Removed top 1 bits (of 4) from port A of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:77$neg$66 ($neg).
+Removed top 31 bits (of 32) from port B of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:82$add$70 ($add).
+Removed top 29 bits (of 32) from port Y of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:82$add$70 ($add).
+Removed top 7 bits (of 16) from port B of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:88$eq$72 ($eq).
+Removed top 31 bits (of 32) from port B of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:98$add$74 ($add).
+Removed top 16 bits (of 32) from port Y of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:98$add$74 ($add).
+Removed top 1 bits (of 2) from port B of cell $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$auto$simple.cc:214:make_patterns_logic$394 ($ne).
+Removed top 16 bits (of 32) from wire $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:71$add$58_Y.
+Removed top 29 bits (of 32) from wire $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.$uart_rx.v:82$add$70_Y.
+
+5.10. Executing PEEPOPT pass (run peephole optimizers).
+
+5.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~2 debug messages>
+
+5.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module uart_top:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx:
+  creating $macc model for $uart_tx.v:82$add$84 ($add).
+  creating $macc model for $uart_tx.v:69$add$81 ($add).
+  creating $alu model for $macc $uart_tx.v:69$add$81.
+  creating $alu model for $macc $uart_tx.v:82$add$84.
+  creating $alu cell for $uart_tx.v:82$add$84: $auto$alumacc.cc:578:replace_alu$406
+  creating $alu cell for $uart_tx.v:69$add$81: $auto$alumacc.cc:578:replace_alu$409
+  created 2 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx:
+  creating $macc model for $uart_rx.v:98$add$74 ($add).
+  creating $macc model for $uart_rx.v:82$add$70 ($add).
+  creating $macc model for $uart_rx.v:77$neg$66 ($neg).
+  creating $alu model for $macc $uart_rx.v:77$neg$66.
+  creating $alu model for $macc $uart_rx.v:82$add$70.
+  creating $alu model for $macc $uart_rx.v:98$add$74.
+  creating $alu cell for $uart_rx.v:98$add$74: $auto$alumacc.cc:578:replace_alu$412
+  creating $alu cell for $uart_rx.v:82$add$70: $auto$alumacc.cc:578:replace_alu$415
+  creating $alu cell for $uart_rx.v:77$neg$66: $auto$alumacc.cc:578:replace_alu$418
+  created 3 $alu and 0 $macc cells.
+
+5.13. Executing SHARE pass (SAT-based resource sharing).
+
+5.14. Executing OPT pass (performing simple optimizations).
+
+5.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+
+5.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 46 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 60 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Removed a total of 0 cells.
+
+5.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~36 debug messages>
+
+5.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_top.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+Performed a total of 0 changes.
+
+5.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 46 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 60 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Removed a total of 0 cells.
+
+5.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+
+5.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+
+5.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+5.15. Executing MEMORY pass.
+
+5.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+5.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+5.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+5.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+5.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+5.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+
+5.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+5.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+5.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+
+5.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+5.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+
+5.17. Executing OPT pass (performing simple optimizations).
+
+5.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+<suppressed ~15 debug messages>
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+<suppressed ~9 debug messages>
+
+5.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 36 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 55 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Removed a total of 0 cells.
+
+5.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+Removed 3 unused cells and 18 unused wires.
+<suppressed ~5 debug messages>
+
+5.17.5. Finished fast OPT passes.
+
+5.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+5.19. Executing OPT pass (performing simple optimizations).
+
+5.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+
+5.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 34 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 54 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Removed a total of 0 cells.
+
+5.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~17 debug messages>
+
+5.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_top.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+  Optimizing cells in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+Performed a total of 0 changes.
+
+5.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 34 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 54 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Removed a total of 0 cells.
+
+5.19.6. Executing OPT_SHARE pass.
+
+5.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+
+5.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+
+5.19.10. Finished fast OPT passes. (There is nothing left to do.)
+
+5.20. Executing TECHMAP pass (map to technology primitives).
+
+5.20.1. Executing Verilog-2005 frontend: C:\Users\olenk\Downloads\oss-cad-suite\bin\../share/yosys/techmap.v
+Parsing Verilog input from `C:\Users\olenk\Downloads\oss-cad-suite\bin\../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+5.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod$2af30114e9bd4ccb04dad757b3f0a8f6bf0615b0\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adffe.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_90_alu for cells of type $alu.
+Using template $paramod$025d767fc934a3e7d59a671de523743ebaa07759\_90_alu for cells of type $alu.
+Using template $paramod$constmap:aaa79bdfe7451deca7ae697c0784fd1c184bd8f2$paramod$40ccfd5a7f1418017a9af25543d0c43a198b5946\_90_shift_shiftx for cells of type $shift.
+Analyzing pattern of constant bits for this cell:
+Creating constmapped module `$paramod$constmap:ed202111594f0a1b622ac8dc4bd7c990ea27025c$paramod$40ccfd5a7f1418017a9af25543d0c43a198b5946\_90_shift_shiftx'.
+
+5.20.14. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$constmap:ed202111594f0a1b622ac8dc4bd7c990ea27025c$paramod$40ccfd5a7f1418017a9af25543d0c43a198b5946\_90_shift_shiftx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$567.
+    dead port 2/2 on $mux $procmux$561.
+    dead port 2/2 on $mux $procmux$555.
+Removed 3 multiplexer ports.
+<suppressed ~352 debug messages>
+
+5.20.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$constmap:ed202111594f0a1b622ac8dc4bd7c990ea27025c$paramod$40ccfd5a7f1418017a9af25543d0c43a198b5946\_90_shift_shiftx.
+<suppressed ~2 debug messages>
+Removed 0 unused cells and 9 unused wires.
+Using template $paramod$constmap:ed202111594f0a1b622ac8dc4bd7c990ea27025c$paramod$40ccfd5a7f1418017a9af25543d0c43a198b5946\_90_shift_shiftx for cells of type $shift.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $pmux.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000100 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+Using template $paramod$constmap:8876c1e1fa289f4793438d4e34d232728e6a9746$paramod$92adee9538f2381d8e5006822c900eb986d754e8\_90_shift_shiftx for cells of type $shiftx.
+Using extmapper simplemap for cells of type $logic_not.
+No more expansions possible.
+<suppressed ~739 debug messages>
+
+5.21. Executing OPT pass (performing simple optimizations).
+
+5.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+<suppressed ~252 debug messages>
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+<suppressed ~412 debug messages>
+
+5.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 225 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 210 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+<suppressed ~45 debug messages>
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 333 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 309 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 308 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+<suppressed ~75 debug messages>
+Removed a total of 40 cells.
+
+5.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+Removed 50 unused cells and 447 unused wires.
+<suppressed ~52 debug messages>
+
+5.21.5. Finished fast OPT passes.
+
+5.22. Executing ABC pass (technology mapping using ABC).
+
+5.22.1. Summary of detected clock domains:
+  63 cells in clk=\clk, en=$auto$simple.cc:230:make_patterns_logic$388, arst=\reset, srst={ }
+  24 cells in clk=\clk, en=$auto$simple.cc:230:make_patterns_logic$397, arst=\reset, srst={ }
+  9 cells in clk=\clk, en=$auto$simple.cc:230:make_patterns_logic$400, arst=\reset, srst={ }
+  195 cells in clk=\clk, en={ }, arst=\reset, srst={ }
+
+5.22.2. Extracting gate netlist of module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:230:make_patterns_logic$388, asynchronously reset by \reset
+
+5.22.3. Extracting gate netlist of module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:230:make_patterns_logic$397, asynchronously reset by \reset
+
+5.22.4. Extracting gate netlist of module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:230:make_patterns_logic$400, asynchronously reset by \reset
+
+5.22.5. Extracting gate netlist of module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, asynchronously reset by \reset
+
+5.22.6. Summary of detected clock domains:
+  8 cells in clk=\clk, en=$auto$simple.cc:230:make_patterns_logic$370, arst=\reset, srst={ }
+  22 cells in clk=\clk, en=$auto$simple.cc:230:make_patterns_logic$360, arst=\reset, srst={ }
+  14 cells in clk=\clk, en=$auto$simple.cc:230:make_patterns_logic$363, arst=\reset, srst={ }
+  23 cells in clk=\clk, en=$auto$simple.cc:230:make_patterns_logic$381, arst=\reset, srst={ }
+  110 cells in clk=\clk, en={ }, arst=\reset, srst={ }
+
+5.22.7. Extracting gate netlist of module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:230:make_patterns_logic$370, asynchronously reset by \reset
+
+5.22.8. Extracting gate netlist of module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:230:make_patterns_logic$360, asynchronously reset by \reset
+
+5.22.9. Extracting gate netlist of module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:230:make_patterns_logic$363, asynchronously reset by \reset
+
+5.22.10. Extracting gate netlist of module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:230:make_patterns_logic$381, asynchronously reset by \reset
+
+5.22.11. Extracting gate netlist of module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, asynchronously reset by \reset
+
+5.22.12. Summary of detected clock domains:
+  2 cells in clk={ }, en={ }, arst={ }, srst={ }
+
+5.22.13. Extracting gate netlist of module `\uart_top' to `<abc-temp-dir>/input.blif'..
+No matching clock domain found. Not extracting any FF cells.
+
+5.22.13.1. Executed ABC.
+Extracted 55 gates and 77 wires to a netlist network with 21 inputs and 10 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.22.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        9
+ABC RESULTS:              NAND cells:       32
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:                OR cells:        1
+ABC RESULTS:              XNOR cells:        2
+ABC RESULTS:               XOR cells:        2
+ABC RESULTS:        internal signals:       46
+ABC RESULTS:           input signals:       21
+ABC RESULTS:          output signals:       10
+Removing temp directory.
+
+5.22.13.1. Executed ABC.
+Extracted 21 gates and 31 wires to a netlist network with 9 inputs and 15 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.22.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        8
+ABC RESULTS:            ANDNOT cells:        3
+ABC RESULTS:               BUF cells:        1
+ABC RESULTS:              NAND cells:        1
+ABC RESULTS:               NOR cells:        2
+ABC RESULTS:               NOT cells:        3
+ABC RESULTS:                OR cells:        2
+ABC RESULTS:        internal signals:        7
+ABC RESULTS:           input signals:        9
+ABC RESULTS:          output signals:       15
+Removing temp directory.
+
+5.22.13.1. Executed ABC.
+Extracted 1 gates and 3 wires to a netlist network with 2 inputs and 1 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.22.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        1
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:        2
+ABC RESULTS:          output signals:        1
+Removing temp directory.
+
+5.22.13.1. Executed ABC.
+Extracted 172 gates and 198 wires to a netlist network with 25 inputs and 30 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.22.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       44
+ABC RESULTS:            ANDNOT cells:       12
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:              NAND cells:       11
+ABC RESULTS:               NOR cells:        8
+ABC RESULTS:               NOT cells:        2
+ABC RESULTS:                OR cells:        4
+ABC RESULTS:             ORNOT cells:        5
+ABC RESULTS:              XNOR cells:        3
+ABC RESULTS:               XOR cells:       11
+ABC RESULTS:        internal signals:      143
+ABC RESULTS:           input signals:       25
+ABC RESULTS:          output signals:       30
+Removing temp directory.
+
+5.22.13.1. Executed ABC.
+Extracted 7 gates and 13 wires to a netlist network with 5 inputs and 5 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.22.13.2. Re-integrating ABC results.
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:              NAND cells:        1
+ABC RESULTS:               NOR cells:        1
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:        internal signals:        3
+ABC RESULTS:           input signals:        5
+ABC RESULTS:          output signals:        5
+Removing temp directory.
+
+5.22.13.1. Executed ABC.
+Extracted 20 gates and 33 wires to a netlist network with 11 inputs and 9 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.22.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        6
+ABC RESULTS:              NAND cells:        3
+ABC RESULTS:               NOR cells:        1
+ABC RESULTS:               NOT cells:        3
+ABC RESULTS:                OR cells:        3
+ABC RESULTS:             ORNOT cells:        2
+ABC RESULTS:        internal signals:       13
+ABC RESULTS:           input signals:       11
+ABC RESULTS:          output signals:        9
+Removing temp directory.
+
+5.22.13.1. Executed ABC.
+Extracted 6 gates and 17 wires to a netlist network with 11 inputs and 6 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.22.13.2. Re-integrating ABC results.
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:               MUX cells:        4
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:       11
+ABC RESULTS:          output signals:        6
+Removing temp directory.
+
+5.22.13.1. Executed ABC.
+Extracted 20 gates and 32 wires to a netlist network with 11 inputs and 8 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.22.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        5
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:               MUX cells:        3
+ABC RESULTS:              NAND cells:        1
+ABC RESULTS:               NOR cells:        5
+ABC RESULTS:                OR cells:        3
+ABC RESULTS:        internal signals:       13
+ABC RESULTS:           input signals:       11
+ABC RESULTS:          output signals:        8
+Removing temp directory.
+
+5.22.13.1. Executed ABC.
+Extracted 93 gates and 115 wires to a netlist network with 20 inputs and 20 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.22.13.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       37
+ABC RESULTS:            ANDNOT cells:       14
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:              NAND cells:        2
+ABC RESULTS:               NOR cells:        6
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:                OR cells:       11
+ABC RESULTS:             ORNOT cells:        1
+ABC RESULTS:              XNOR cells:        1
+ABC RESULTS:               XOR cells:        2
+ABC RESULTS:        internal signals:       75
+ABC RESULTS:           input signals:       20
+ABC RESULTS:          output signals:       20
+Removing temp directory.
+
+5.22.13.1. Executed ABC.
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+Removing global temp directory.
+
+5.23. Executing OPT pass (performing simple optimizations).
+
+5.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_top.
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx.
+<suppressed ~1 debug messages>
+Optimizing module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx.
+
+5.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_top'.
+Computing hashes of 2 cells of `\uart_top'.
+Finding duplicate cells in `\uart_top'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Computing hashes of 154 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx'.
+Finding identical cells in module `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 210 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Computing hashes of 208 cells of `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+Finding duplicate cells in `$paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+5.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_top..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx..
+Finding unused cells or wires in module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx..
+Removed 0 unused cells and 329 unused wires.
+<suppressed ~2 debug messages>
+
+5.23.5. Finished fast OPT passes.
+
+5.24. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `uart_top'. Setting top module to uart_top.
+
+5.24.1. Analyzing design hierarchy..
+Top module:  \uart_top
+Used module:     $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx
+Used module:     $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx
+
+5.24.2. Analyzing design hierarchy..
+Top module:  \uart_top
+Used module:     $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx
+Used module:     $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx
+Removed 0 unused modules.
+
+5.25. Printing statistics.
+
+=== uart_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        9 wires
+       23 wire bits
+        9 public wires
+       23 public wire bits
+        9 ports
+       23 port bits
+        2 submodules
+        1   $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx
+        1   $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx
+
+=== $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      115 wires
+      165 wire bits
+       10 public wires
+       42 public wire bits
+        6 ports
+       13 port bits
+      154 cells
+       17   $_ANDNOT_
+       48   $_AND_
+       14   $_DFFE_PP0P_
+       16   $_DFF_PP0_
+        1   $_DFF_PP1_
+        9   $_MUX_
+        7   $_NAND_
+       13   $_NOR_
+        6   $_NOT_
+        3   $_ORNOT_
+       17   $_OR_
+        1   $_XNOR_
+        2   $_XOR_
+
+=== $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      151 wires
+      219 wire bits
+       11 public wires
+       45 public wire bits
+        5 ports
+       12 port bits
+      208 cells
+       15   $_ANDNOT_
+       60   $_AND_
+       19   $_DFFE_PP0P_
+       20   $_DFF_PP0_
+        3   $_DFF_PP1_
+        1   $_MUX_
+       44   $_NAND_
+       10   $_NOR_
+        6   $_NOT_
+        5   $_ORNOT_
+        7   $_OR_
+        5   $_XNOR_
+       13   $_XOR_
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+      362 uart_top
+      208 $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx
+      154 $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx
+
+        +----------Count including submodules.
+        | 
+      275 wires
+      407 wire bits
+       30 public wires
+      110 public wire bits
+       20 ports
+       48 port bits
+        - memories
+        - memory bits
+        - processes
+      362 cells
+       32   $_ANDNOT_
+      108   $_AND_
+       33   $_DFFE_PP0P_
+       36   $_DFF_PP0_
+        4   $_DFF_PP1_
+       10   $_MUX_
+       51   $_NAND_
+       23   $_NOR_
+       12   $_NOT_
+        8   $_ORNOT_
+       24   $_OR_
+        6   $_XNOR_
+       15   $_XOR_
+        2 submodules
+        1   $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx
+        1   $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx
+
+5.26. Executing CHECK pass (checking for obvious problems).
+Checking module uart_top...
+Checking module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx...
+Checking module $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx...
+Found and reported 0 problems.
+
+6. Printing statistics.
+
+=== uart_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        9 wires
+       23 wire bits
+        9 public wires
+       23 public wire bits
+        9 ports
+       23 port bits
+        2 submodules
+        1   $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx
+        1   $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx
+
+=== $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      115 wires
+      165 wire bits
+       10 public wires
+       42 public wire bits
+        6 ports
+       13 port bits
+      154 cells
+       17   $_ANDNOT_
+       48   $_AND_
+       14   $_DFFE_PP0P_
+       16   $_DFF_PP0_
+        1   $_DFF_PP1_
+        9   $_MUX_
+        7   $_NAND_
+       13   $_NOR_
+        6   $_NOT_
+        3   $_ORNOT_
+       17   $_OR_
+        1   $_XNOR_
+        2   $_XOR_
+
+=== $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      151 wires
+      219 wire bits
+       11 public wires
+       45 public wire bits
+        5 ports
+       12 port bits
+      208 cells
+       15   $_ANDNOT_
+       60   $_AND_
+       19   $_DFFE_PP0P_
+       20   $_DFF_PP0_
+        3   $_DFF_PP1_
+        1   $_MUX_
+       44   $_NAND_
+       10   $_NOR_
+        6   $_NOT_
+        5   $_ORNOT_
+        7   $_OR_
+        5   $_XNOR_
+       13   $_XOR_
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+      362 uart_top
+      208 $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx
+      154 $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx
+
+        +----------Count including submodules.
+        | 
+      275 wires
+      407 wire bits
+       30 public wires
+      110 public wire bits
+       20 ports
+       48 port bits
+        - memories
+        - memory bits
+        - processes
+      362 cells
+       32   $_ANDNOT_
+      108   $_AND_
+       33   $_DFFE_PP0P_
+       36   $_DFF_PP0_
+        4   $_DFF_PP1_
+       10   $_MUX_
+       51   $_NAND_
+       23   $_NOR_
+       12   $_NOT_
+        8   $_ORNOT_
+       24   $_OR_
+        6   $_XNOR_
+       15   $_XOR_
+        2 submodules
+        1   $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_rx
+        1   $paramod$d40569e2e5029e2dde4c9be19ab6c750b8104d07\uart_tx
+
+End of script. Logfile hash: e027e65f60
+Yosys 0.70+360 (git sha1 5e740962d, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 2% 28x opt_expr (0 sec), 2% 20x opt_clean (0 sec), ...
